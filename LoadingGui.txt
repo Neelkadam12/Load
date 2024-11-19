@@ -1,0 +1,187 @@
+-- Create the ScreenGui
+local screenGui = Instance.new("ScreenGui")
+screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+screenGui.Name = "LoadingScreen"
+
+-- Main Frame
+local mainFrame = Instance.new("Frame")
+mainFrame.Size = UDim2.new(0.5, 0, 0.3, 0)
+mainFrame.Position = UDim2.new(0.25, 0, 0.35, 0)
+mainFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+mainFrame.BackgroundTransparency = 0.2
+mainFrame.ClipsDescendants = true
+mainFrame.Parent = screenGui
+mainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+mainFrame.BorderSizePixel = 0
+mainFrame.Active = true
+mainFrame.Draggable = true -- Enable dragging
+
+-- UICorner for smooth edges
+local uiCorner = Instance.new("UICorner")
+uiCorner.CornerRadius = UDim.new(0, 15)
+uiCorner.Parent = mainFrame
+
+-- Minimize Button
+local minimizeButton = Instance.new("TextButton")
+minimizeButton.Size = UDim2.new(0.1, 0, 0.2, 0)
+minimizeButton.Position = UDim2.new(0.9, -10, 0, 10)
+minimizeButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+minimizeButton.Text = "-"
+minimizeButton.Font = Enum.Font.GothamBold
+minimizeButton.TextSize = 24
+minimizeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+minimizeButton.Parent = mainFrame
+
+local minimizeCorner = Instance.new("UICorner")
+minimizeCorner.CornerRadius = UDim.new(0, 10)
+minimizeCorner.Parent = minimizeButton
+
+-- Loading Text
+local loadingText = Instance.new("TextLabel")
+loadingText.Size = UDim2.new(1, 0, 0.3, 0)
+loadingText.Position = UDim2.new(0, 0, 0.1, 0)
+loadingText.BackgroundTransparency = 1
+loadingText.TextColor3 = Color3.fromRGB(255, 255, 255)
+loadingText.Font = Enum.Font.GothamBold
+loadingText.TextSize = 24
+loadingText.Text = "Loading..."
+loadingText.Parent = mainFrame
+
+-- Pop-up Text
+local popUpText = Instance.new("TextLabel")
+popUpText.Size = UDim2.new(1, 0, 0.3, 0)
+popUpText.Position = UDim2.new(0, 0, 0.5, 0)
+popUpText.BackgroundTransparency = 1
+popUpText.TextColor3 = Color3.fromRGB(200, 200, 200)
+popUpText.Font = Enum.Font.Gotham
+popUpText.TextSize = 20
+popUpText.Text = ""
+popUpText.Parent = mainFrame
+
+-- Loading Bar
+local loadingBarFrame = Instance.new("Frame")
+loadingBarFrame.Size = UDim2.new(0.9, 0, 0.1, 0)
+loadingBarFrame.Position = UDim2.new(0.05, 0, 0.8, 0)
+loadingBarFrame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+loadingBarFrame.BorderSizePixel = 0
+loadingBarFrame.Parent = mainFrame
+
+local uiCornerBar = Instance.new("UICorner")
+uiCornerBar.CornerRadius = UDim.new(0, 10)
+uiCornerBar.Parent = loadingBarFrame
+
+local loadingBar = Instance.new("Frame")
+loadingBar.Size = UDim2.new(0, 0, 1, 0)
+loadingBar.Position = UDim2.new(0, 0, 0, 0)
+loadingBar.BackgroundColor3 = Color3.fromRGB(0, 170, 255)
+loadingBar.BorderSizePixel = 0
+loadingBar.Parent = loadingBarFrame
+
+local uiCornerBarFill = Instance.new("UICorner")
+uiCornerBarFill.CornerRadius = UDim.new(0, 10)
+uiCornerBarFill.Parent = loadingBar
+
+-- Minimized GUI Frame
+local minimizedFrame = Instance.new("Frame")
+minimizedFrame.Size = UDim2.new(0.3, 0, 0.1, 0)
+minimizedFrame.Position = UDim2.new(0.35, 0, 0.8, 0)
+minimizedFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+minimizedFrame.Visible = false
+minimizedFrame.Parent = screenGui
+
+local minimizedCorner = Instance.new("UICorner")
+minimizedCorner.CornerRadius = UDim.new(0, 15)
+minimizedCorner.Parent = minimizedFrame
+
+local minimizedLoadingText = Instance.new("TextLabel")
+minimizedLoadingText.Size = UDim2.new(1, 0, 0.5, 0)
+minimizedLoadingText.Position = UDim2.new(0, 0, 0.1, 0)
+minimizedLoadingText.BackgroundTransparency = 1
+minimizedLoadingText.TextColor3 = Color3.fromRGB(255, 255, 255)
+minimizedLoadingText.Font = Enum.Font.GothamBold
+minimizedLoadingText.TextSize = 18
+minimizedLoadingText.Text = "Loading..."
+minimizedLoadingText.Parent = minimizedFrame
+
+local minimizedLoadingBarFrame = Instance.new("Frame")
+minimizedLoadingBarFrame.Size = UDim2.new(0.8, 0, 0.2, 0)
+minimizedLoadingBarFrame.Position = UDim2.new(0.1, 0, 0.7, 0)
+minimizedLoadingBarFrame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+minimizedLoadingBarFrame.BorderSizePixel = 0
+minimizedLoadingBarFrame.Parent = minimizedFrame
+
+local minimizedLoadingBar = Instance.new("Frame")
+minimizedLoadingBar.Size = UDim2.new(0, 0, 1, 0)
+minimizedLoadingBar.Position = UDim2.new(0, 0, 0, 0)
+minimizedLoadingBar.BackgroundColor3 = Color3.fromRGB(0, 170, 255)
+minimizedLoadingBar.BorderSizePixel = 0
+minimizedLoadingBar.Parent = minimizedLoadingBarFrame
+
+local uiCornerMinBar = Instance.new("UICorner")
+uiCornerMinBar.CornerRadius = UDim.new(0, 10)
+uiCornerMinBar.Parent = minimizedLoadingBarFrame
+
+local uiCornerMinBarFill = Instance.new("UICorner")
+uiCornerMinBarFill.CornerRadius = UDim.new(0, 10)
+uiCornerMinBarFill.Parent = minimizedLoadingBar
+
+-- Minimize Functionality
+minimizeButton.MouseButton1Click:Connect(function()
+    if mainFrame.Visible then
+        mainFrame.Visible = false
+        minimizedFrame.Visible = true
+    else
+        mainFrame.Visible = true
+        minimizedFrame.Visible = false
+    end
+end)
+
+-- Loading Animation Logic
+local function animateLoading(messages)
+    for _, message in ipairs(messages) do
+        popUpText.Text = message
+        minimizedLoadingText.Text = message
+        for transparency = 0, 1, 0.02 do
+            popUpText.TextTransparency = transparency
+            minimizedLoadingText.TextTransparency = transparency
+            wait(0.02)
+        end
+        wait(0.5)
+        for transparency = 1, 0, -0.02 do
+            popUpText.TextTransparency = transparency
+            minimizedLoadingText.TextTransparency = transparency
+            wait(0.02)
+        end
+    end
+end
+
+local function animateBar(bar, steps, duration)
+    for i = 1, steps do
+        bar:TweenSize(UDim2.new(i / steps, 0, 1, 0), "Out", "Sine", duration / steps, true)
+        wait(duration / steps)
+    end
+end
+
+-- Messages to Display
+local messages = {
+    "Welcome",
+    "Wait 3 minutes to load the script",
+    "Loading up the script!",
+    "Thanks for choosing ZyroScripts"
+}
+
+-- Start Animations
+spawn(function() animateLoading(messages) end)
+animateBar(loadingBar, 300, 180) -- 300 steps over 3 minutes
+animateBar(minimizedLoadingBar, 300, 180)
+
+-- Notification After Loading
+wait(180)
+local notificationBadge = Instance.new("TextLabel")
+notificationBadge.Size = UDim2.new(0.4, 0, 0.1, 0)
+notificationBadge.Position = UDim2.new(0.3, 0, 0.45, 0)
+notificationBadge.BackgroundColor3 = Color3.fromRGB(0, 170, 255)
+notificationBadge.Text = "The assets are done!"
+notificationBadge.Font = Enum.Font.GothamBold
+notificationBadge.TextSize = 18
+notificationBadge.TextColor3
